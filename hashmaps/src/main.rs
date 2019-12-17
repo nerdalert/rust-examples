@@ -16,11 +16,11 @@ fn main() {
     println!("Server count -> {}", hosts.len());
     // get the val from server1
     let srv1_ip = hosts.get("server1");
-    println!("The IP for server1 is -> {:?}", srv1_ip);
+    println!("The IP for server1 is -> {:?}", srv1_ip.unwrap());
     // overwrite the val for the server1 key
     hosts.insert("server1", "192.168.200.40");
     let srv1_ip = hosts.get("server1");
-    println!("The new IP for server1 is -> {:?}", srv1_ip);
+    println!("The new IP for server1 is -> {:?}", srv1_ip.unwrap());
     // iterate over the map
     for (k, v) in &hosts {
         println!("{} : {}", k, v);
@@ -31,10 +31,10 @@ fn main() {
 The output is:
 -------------
 Server count -> 4
-The IP for server1 is -> Some("172.17.0.10")
-The new IP for server1 is -> Some("192.168.200.40")
+The IP for server1 is -> "172.17.0.10"
+The new IP for server1 is -> "192.168.200.40"
 server1 : 192.168.200.40
-server2 : 192.168.100.10
-server4 : 10.200.10.30
 server3 : 10.100.10.20
+server4 : 10.200.10.30
+server2 : 192.168.100.10
 */

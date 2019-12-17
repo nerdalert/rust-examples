@@ -24,22 +24,27 @@ fn main() {
     println!("Collected (0..10) into: {:?}", collected_iterator);
 
     // The `vec!` macro can be used to initialize a vector
-    let mut xs = vec![1i32, 2, 3];
-    println!("Initial vector: {:?}", xs);
+    let mut example_vector = vec![1i32, 2, 3];
+    println!("Initial vector: {:?}", example_vector);
 
     // Insert new element at the end of the vector
     println!("Push 4 into the vector");
-    xs.push(4);
-    println!("Vector: {:?}", xs);
+    example_vector.push(4);
+    println!("Vector: {:?}", example_vector);
 
     // The `len` method yields the current size of the vector
-    println!("Vector size: {}", xs.len());
+    println!("Vector size: {}", example_vector.len());
 
     // Indexing is done using the square brackets (indexing starts at 0)
-    println!("Second element: {}", xs[1]);
+    println!("Second element: {}", example_vector[1]);
 
     // `pop` removes the last element from the vector and returns it
-    println!("Pop last element: {:?}", xs.pop());
+    println!("Pop last element: {:?}", example_vector.pop());
+
+    // iterate over the vector
+    for example_vector in &example_vector {
+        println!("iterating over the vector {}", example_vector);
+    }
 }
 
 /*
@@ -53,4 +58,7 @@ Vector: [1, 2, 3, 4]
 Vector size: 4
 Second element: 2
 Pop last element: Some(4)
+iterating over the vector 1
+iterating over the vector 2
+iterating over the vector 3
 */

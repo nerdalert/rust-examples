@@ -1,4 +1,4 @@
-/// Run with `cargo run hello world`
+/// Run with `cargo run first second thrid`
 /// "target/debug/args" will always be the first arg[0] in Rust
 use std::env;
 
@@ -14,7 +14,10 @@ fn main() {
 /*
 Example output:
 --------------
-$> cargo run Hello World
-["target/debug/args", "Hello", "World"]
-First Arg Passed --> "Hello" Second Arg Passed --> "World"
+$> cargo run first second third
+["target/debug/args-1", "first", "second", "third"]
+First Arg Passed --> "first" Second Arg Passed --> "second"
+
+Note: you will get out of bounds errors from the vector
+is you don't pass any arguments.
 */

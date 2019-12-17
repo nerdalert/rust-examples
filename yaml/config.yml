@@ -1,0 +1,10 @@
+---
+test_length: 5
+test_interval: 20
+grafana_address: localhost
+grafana_port: 2003
+tsdb_prefix: latency
+endpoints:
+  - 8.8.8.8
+  - aws.amazon.com
+  - cloud.google.com

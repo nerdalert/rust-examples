@@ -35,12 +35,12 @@ Then cd into any of the directories and run the app with `cargo run`
     Finished dev [unoptimized + debuginfo] target(s) in 0.57s
      Running `target/debug/hashmaps`
 Server count -> 4
-The IP for server1 is -> Some("172.17.0.10")
-The new IP for server1 is -> Some("192.168.200.40")
-server2 : 192.168.100.10
+The IP for server1 is -> "172.17.0.10"
+The new IP for server1 is -> "192.168.200.40"
 server1 : 192.168.200.40
 server3 : 10.100.10.20
 server4 : 10.200.10.30
+server2 : 192.168.100.10
 ```
 
 Happy hacking family!
