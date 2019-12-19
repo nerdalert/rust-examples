@@ -3,7 +3,6 @@
 /// size, which is known at compile time, is part of their type signature
 /// [T; size].
 fn main() {
-
     let cat_colors: [&str; 3] = ["grey", "black", "orange"];
     for cat in cat_colors.iter() {
         println!("Cat colors --> {}", cat)
@@ -18,7 +17,10 @@ fn main() {
     // another option
     let number_of_cats: [i32; 4] = [1, 2, 3, 4];
     for i in 0..number_of_cats.len() {
-        println!("Number of index -> {} and number of cats -> {}", i, number_of_cats[i])
+        println!(
+            "Number of index -> {} and number of cats -> {}",
+            i, number_of_cats[i]
+        )
     }
 }
 

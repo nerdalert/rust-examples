@@ -22,4 +22,3 @@ The output is:
 -------------
 East we go
 */
-

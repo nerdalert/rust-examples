@@ -4,7 +4,8 @@
 /// replaces them with the replacement string slice.
 fn main() {
     // option #1
-    let option1 = str::replace("192.168.1.100", ".", "-");
+    let host = "192.168.1.100";
+    let option1 = str::replace(host, ".", "-");
     println!("{}", option1);
     // option #2
     let option2 = "docs.aws.amazon.com".replace(".", "-");

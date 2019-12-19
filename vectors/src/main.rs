@@ -1,7 +1,6 @@
 /// Vectors are re-sizable arrays. Like slices, their size is not
 /// known at compile time, but they can grow or shrink at any time.
 fn main() {
-
     let ibm = "ibm".to_string();
 
     // Example of creating a String Vector

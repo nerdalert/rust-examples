@@ -8,9 +8,8 @@ use std::thread;
 use std::time::Duration;
 
 fn main() {
-
     // Example 1: a one liner
-    let add_one = |x| { x + 1 };
+    let add_one = |x| x + 1;
     let n = add_one(5);
     println!(" {}", n);
 
@@ -26,4 +25,3 @@ fn main() {
     let after_closure = example_closure(before_closure);
     println!("Value after the closure: {}", after_closure);
 }
-

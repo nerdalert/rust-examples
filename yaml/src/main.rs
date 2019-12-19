@@ -1,8 +1,8 @@
 /// Parse yaml from the included file config.yml
 #[macro_use]
 extern crate serde_derive;
-extern crate serde_yaml;
 extern crate serde;
+extern crate serde_yaml;
 
 use std::fs::File;
 use std::io::Read;
@@ -34,7 +34,10 @@ fn main() {
             }
         }
         Err(error) => {
-            println!("There was an error opening the configuration file: -> {} Error: -> {}", filename, error);
+            println!(
+                "There was an error opening the configuration file: -> {} Error: -> {}",
+                filename, error
+            );
         }
     }
 }
@@ -51,4 +54,3 @@ iterating over the endpoint vector "8.8.8.8"
 iterating over the endpoint vector "aws.amazon.com"
 iterating over the endpoint vector "cloud.google.com"
 */
-

@@ -23,7 +23,11 @@ fn main() {
         .unwrap_or_else(|e| e.exit());
 
     let config = args.get_str("--config");
-    let config = if config.is_empty() { DEFAULT_CONFIG } else { config };
+    let config = if config.is_empty() {
+        DEFAULT_CONFIG
+    } else {
+        config
+    };
 
     println!("{:?}", args);
 

@@ -5,16 +5,16 @@ use serde_json::Value;
 
 fn extract(json: &Value, path: String, extracted: &mut Vec<(String, String)>) {
     match json {
-        | Value::String(s) => extracted.push((path, s.clone())),
-        | Value::Null => extracted.push((path, "null".to_string())),
-        | Value::Number(n) => extracted.push((path, n.to_string())),
-        | Value::Bool(b) => extracted.push((path, b.to_string())),
-        | Value::Object(m) => {
+        Value::String(s) => extracted.push((path, s.clone())),
+        Value::Null => extracted.push((path, "null".to_string())),
+        Value::Number(n) => extracted.push((path, n.to_string())),
+        Value::Bool(b) => extracted.push((path, b.to_string())),
+        Value::Object(m) => {
             for (k, v) in m {
                 extract(v, format!("{}/{}", path, k), extracted);
             }
         }
-        | Value::Array(a) => {
+        Value::Array(a) => {
             for (i, v) in a.iter().enumerate() {
                 extract(v, format!("{}[{}]", path, i), extracted);
             }

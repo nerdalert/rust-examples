@@ -16,13 +16,22 @@ impl Person {
     }
 }
 
-fn make_people(){
-    let mut bob = Person{ first_name: "Bob".to_string(), age: 25};
-    println!("Person ==> Name: {:?} is Age {} yrs old", bob.first_name, bob.age);
+fn make_people() {
+    let mut bob = Person {
+        first_name: "Bob".to_string(),
+        age: 25,
+    };
+    println!(
+        "Person ==> Name: {:?} is Age {} yrs old",
+        bob.first_name, bob.age
+    );
 
     // use the constructor to instantiate the new instance of Person
     let mut mary = Person::new("Mary", 35);
-    println!("Person ==> Name: {:?}  is Age {} yrs old", mary.first_name, mary.age);
+    println!(
+        "Person ==> Name: {:?}  is Age {} yrs old",
+        mary.first_name, mary.age
+    );
     mary.age = 36;
     println!("Name: {:?} is now {} yrs old", mary.first_name, mary.age);
 }
