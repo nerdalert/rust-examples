@@ -17,11 +17,32 @@ fn main() {
     let example_closure = |mut num: i32| -> i32 {
         println!("calculating slowly...");
         thread::sleep(Duration::from_secs(2));
-        num = num + 19;
+        num = &num + 19;
         num
     };
     let before_closure = 10;
     println!("Value before the closure: {}", before_closure);
     let after_closure = example_closure(before_closure);
     println!("Value after the closure: {}", after_closure);
+
+    // Example #3
+    let msg: &str = "Hi!";
+    let say_hi = || {
+        println!("{}", msg);
+    };
+    say_hi();
+
+    // Example #4 (basically a shortcut function)
+    // |x| is the parameter being passed into the closure
+    let num = 5;
+    let math_op = |x| x * x;
+    let sq = math_op(num);
+    println!("{}^{} equals -> {}", num, num, sq);
+
+    // Example #5
+    let a = "hello".to_string();
+    let fs = || {
+        println!("we got {}", a);
+    };
+    fs();
 }
