@@ -1,6 +1,5 @@
 use dns_lookup::lookup_addr;
 use dns_lookup::lookup_host;
-use std::net;
 use std::net::IpAddr;
 
 fn main() {
@@ -58,8 +57,8 @@ fn resolve_host(host: &str) -> Result<IpAddr, String> {
     match host.parse::<IpAddr>() {
         Ok(val) => Ok(val),
         _ => {
-        let ip_list = lookup_host(host).map_err(|_| "dns_lookup::lookup_host failed")?;
-           Ok(*ip_list.first().unwrap())
+            let ip_list = lookup_host(host).map_err(|_| "dns_lookup::lookup_host failed")?;
+            Ok(*ip_list.first().unwrap())
         }
     }
 }

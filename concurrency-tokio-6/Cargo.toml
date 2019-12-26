@@ -1,0 +1,19 @@
+[package]
+name = "concurrency-tokio-6"
+version = "0.1.0"
+authors = ["Brent Salisbury <brent.salisbury@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "0.3.0"
+tokio = { version = "0.2.0", features = ["tcp", "udp", 
+    "io-util", # for AsyncReadExt and AsyncWriteExt
+    "time",
+    "macros", 
+    "dns", # for ToSocketAddrs' Implementations on String, etc
+]}
+tokio-util = { version = "0.2.0", features = ["udp", "codec"] }
+bytes = "0.5"
+env_logger = "0.6"
