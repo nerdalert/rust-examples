@@ -1,3 +1,5 @@
+/// This is just a toy BGP listener Im playing around with
+/// to learn tokio 0.2.0+
 extern crate futures;
 extern crate tokio;
 extern crate tokio_timer;
@@ -57,8 +59,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 pub struct Global {
     pub as_number: u32,
     pub id: Ipv4Addr,
-
-    // hack for now; will be replaced with neighbor group.
     pub peers: HashMap<IpAddr, Peer>,
     pub init: mpsc::Sender<()>,
 }
@@ -89,15 +89,23 @@ async fn handle_session(
         }
     }
     println!("Waiting for peer messages..");
+    // LinesCodec is a simple codec that looks for /n breaks
     let mut session = Framed::new(stream, LinesCodec::new());
     loop {
         match session.next().await {
             Some(Ok(msg)) => {
                 println!("{}: {}", &addr, msg);
-
                 let mut t = table.lock().await;
                 t.master.push(msg.to_string());
                 println!("Contents of Table ----->  {:?}", t.master);
+                t.routes.insert(addr, msg);
+                for (peer, route) in &t.routes {
+                    println!("Table Peer -> {} Peer Routes ->  {}", peer, route);
+                }
+
+                // TODO Add a Nested Vector for Routes
+
+
             }
             Some(Err(_)) => {
                 println!("Connection error from {}", &addr);
@@ -124,6 +132,7 @@ pub struct Peer {
     pub router_id: Ipv4Addr,
 }
 
+// Example implementing Display Debug
 impl Display for Peer {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
         write!(f, "Debug Print ---> ({}, {})", self.address, self.router_id)
@@ -146,16 +155,6 @@ impl Peer {
             address: address,
             remote_as: 0,
             router_id: Ipv4Addr::new(0, 0, 0, 0),
-            // local_as: 0,
-            // peer_type: 0,
-            // state: bgp::State::Idle,
-            // uptime: SystemTime::UNIX_EPOCH,
-            // downtime: SystemTime::UNIX_EPOCH,
-            // counter_tx: Default::default(),
-            // counter_rx: Default::default(),
-            // accepted: 0,
-            // remote_cap: Vec::new(),
-            // local_cap: Vec::new(),
         }
     }
 }
@@ -164,7 +163,7 @@ impl Peer {
 pub struct Table {
     pub disable_best_path_selection: bool,
     pub master: Vec<String>,
-    // pub master: HashMap<String, String>,
+    pub routes: HashMap<IpAddr, String>,
 }
 
 impl Table {
@@ -172,6 +171,7 @@ impl Table {
         Table {
             disable_best_path_selection: false,
             master: Vec::new(),
+            routes:  HashMap::new(),
         }
     }
 }
