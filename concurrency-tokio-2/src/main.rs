@@ -6,7 +6,6 @@ use std::time;
 async fn main() {
     let handle = tokio::spawn(async {
         println!("doing some work, asynchronously");
-
         thread::sleep(time::Duration::from_secs(5));
         // Return a value for the example
         "result of the computation #1"
