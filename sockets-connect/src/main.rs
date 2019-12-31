@@ -21,14 +21,20 @@ fn main() {
     // Take a timestamp after the socket closed
     let timestamp_end = Instant::now();
     // Print the time it took to open a socket to the target
-    println!("Latency to host: {:?} was {:?}\n", &remote, timestamp_end - timestamp_start);
+    println!(
+        "Latency to host: {:?} was {:?}\n",
+        &remote,
+        timestamp_end - timestamp_start
+    );
 
     // Now lets test a host that will timeout
     let remote: SocketAddr = "8.8.8.8:80".parse().unwrap();
     if TcpStream::connect_timeout(&remote, socket_timeout).is_ok() {
         println!("Successfully connected to {:?}", remote);
     } else {
-        println!("Connection to {:?} timed out after {:?}", remote, socket_timeout);
+        println!(
+            "Connection to {:?} timed out after {:?}",
+            remote, socket_timeout
+        );
     }
 }
-

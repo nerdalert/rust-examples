@@ -25,7 +25,7 @@ Example output:
 --------------
 // Notice when passing args through 'cargo run' the `--` is required
 $> cargo run -- -h
-clap cli example 
+clap cli example
 
 USAGE:
     cli-clap [OPTIONS]
