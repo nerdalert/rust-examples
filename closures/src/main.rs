@@ -11,7 +11,7 @@ fn main() {
     // Example 1: a one liner
     let add_one = |x| x + 1;
     let n = add_one(5);
-    println!(" {}", n);
+    println!("The add_one one closure results in {}", n);
 
     // Example 2:
     let example_closure = |mut num: i32| -> i32 {
@@ -39,10 +39,23 @@ fn main() {
     let sq = math_op(num);
     println!("{}^{} equals -> {}", num, num, sq);
 
-    // Example #5
+    // Example #5 variables are availble
+    // from outside of the closure scope
     let a = "hello".to_string();
     let fs = || {
         println!("we got {}", a);
     };
     fs();
 }
+
+/*
+Example output:
+--------------
+The add_one one closure results in 6
+Value before the closure: 10
+calculating slowly...
+Value after the closure: 29
+Hi!
+5^5 equals -> 25
+we got hello
+*/

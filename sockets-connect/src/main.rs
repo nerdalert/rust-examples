@@ -38,3 +38,12 @@ fn main() {
         );
     }
 }
+
+/*
+Example output:
+--------------
+Successfully connected to V4(1.1.1.1:80)
+Latency to host: V4(1.1.1.1:80) was 20.535065ms
+
+Connection to V4(8.8.8.8:80) timed out after 5s
+*/

@@ -32,12 +32,12 @@ fn main() {
     let as_num = 65001;
     // Instantiate a new instance of BgpOpenMessage
     let mut bgp_msg = BgpOpenMessage::new(bgp_id, as_num);
-    
+
     // Since we added #[derive(Debug)] to the struct,
     // we can print the instance with {:?}
     // and pretty print with {:#?}
     println!("BGP Open Message is -> {:#?}", bgp_msg);
-    
+
     // Create a new ID
     let new_id = Ipv4Addr::new(192, 168, 200, 20);
     // Update the instance with a new ID

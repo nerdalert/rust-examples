@@ -48,3 +48,10 @@ fn main() {
     make_sound(&kitty); // Meow!
     make_sound(&the_bell); // Ding Dong!
 }
+
+/*
+Example output:
+--------------
+Meow!
+Ding Dong!
+*/

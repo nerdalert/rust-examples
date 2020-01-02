@@ -1,5 +1,5 @@
-use std::fs;
 use std::error::Error;
+use std::fs;
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::{self, BufRead};
@@ -24,14 +24,13 @@ static RANDOM_LYRICS: &str = "
 fn main() -> Result<(), Box<dyn Error>> {
     // Uncomment the following to see errors returned from main()
     // let _ = File::open("nonexistant-file.txt")?;
-   
 
     let path_dir = Path::new("./out");
     if !path_dir.exists() {
         println!("Creating directory: {:?}", path_dir);
         fs::create_dir("out")?;
     }
-    
+
     let path = Path::new("out/lyrics.txt");
     let display = path.display();
 
