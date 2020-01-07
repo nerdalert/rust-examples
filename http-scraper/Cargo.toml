@@ -1,5 +1,5 @@
 [package]
-name = "http-requets"
+name = "http-scraper"
 version = "0.1.0"
 authors = ["Brent Salisbury <brent.salisbury@gmail.com>"]
 edition = "2018"
@@ -9,3 +9,5 @@ edition = "2018"
 [dependencies]
 reqwest = { version = "0.10.0-alpha.2" }
 tokio = { version = "0.2", features = ["macros"] }
+scraper = "0.11.0"
+colored = "1.9.1"

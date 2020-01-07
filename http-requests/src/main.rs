@@ -1,31 +1,17 @@
 use reqwest;
-use reqwest::Error;
 
-fn main() {
-    // Example #1
-    let resp = match reqwest::get("https://www.rust-lang.org") {
-        Ok(r) => r,
-        Err(e) => panic!("called `Result::unwrap()` on an `Err` value: {:?}", e),
-    };
-    println!("body = {:?}\n", resp);
+const URL: &str = "http://checkip.amazonaws.com/";
 
-    // Example #2
-    let response = match get_web() {
-        Ok(r) => r,
-        Err(e) => panic!("called `Result::unwrap()` on an `Err` value: {:?}", e),
-    };
-    println!("body = {:?}\n", response)
-}
-
-fn get_web() -> Result<reqwest::Response, Error> {
-    let request_url = "http://github.com";
-    let api_resp = reqwest::get(request_url)?;
-    Ok(api_resp)
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let resp = reqwest::get(URL).await?;
+    let body = resp.text().await?;
+    println!("Your public address is: {}", body);
+    Ok(())
 }
 
 /*
-Example output:
+Example Output:
 --------------
-body = Response { url: "https://www.rust-lang.org/", status: 200, headers:  ...
-body = Response { url: "https://github.com/", status: 200, headers: ...
+<prints your public ip>
 */
